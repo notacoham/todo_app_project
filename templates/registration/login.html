@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div>
+      <h2>Login</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 10px;">
+          <p>Please correct the following errors:</p>
+          {% for field, errors in form.errors.items %}
+            {% if field == '__all__' %}
+              {% for error in errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            {% else %}
+              {% for error in errors %}
+                <p>{{ field|capfirst }}: {{ error }}</p>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div>
+          <label for="id_username">Username:</label>
+          <input type="text" name="username" id="id_username" required />
+        </div>
+        <div>
+          <label for="id_password">Password:</label>
+          <input type="password" name="password" id="id_password" required />
+        </div>
+        <button type="submit">Log In</button>
+      </form>
+      <p>Don't have an account? Sign up!</p>
+    </div>
+  </body>
+</html>
