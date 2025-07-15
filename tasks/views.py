@@ -55,4 +55,4 @@ def task_edit(request, pk):
     'title': f"Edit Task: {task.title}"
   }
 
-  return render(request, 'task/task_form.html', context)
+  return render(request, 'tasks/task_form.html', context)

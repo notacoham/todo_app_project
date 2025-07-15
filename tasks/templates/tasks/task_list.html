@@ -45,6 +45,14 @@
               >Priority: {{ task.get_priority_display }}</span
             >
           </div>
+          <div>
+            {% if task.is_complete %}
+            <span>Complete</span>
+            {% else %}
+            <span>Incomplete</span>
+            {% endif %}
+            <a href="{% url 'tasks:task_edit' task.pk %}">Edit</a>
+          </div>
         </li>
         {% endfor %}
       </ul>
