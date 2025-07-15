@@ -5,7 +5,10 @@ from .models import Task
 from .forms import TaskForm, CustomUserCreationForm
 
 # Create your views here.
-
+def home(request):
+  if request.user.is_authenticated:
+    return redirect('tasks:task_list')
+  return render(request, 'tasks/home.html')
 
 @login_required
 def task_list(request):
