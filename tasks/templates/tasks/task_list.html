@@ -48,10 +48,10 @@
         </li>
         {% endfor %}
       </ul>
-      {% else }
+      {% else %}
       <p>You don't have any tasks yet. Lets make some!</p>
       {% endif %}
-      <p><a href="#">Create New Task</a></p>
+      <p><a href="{% url 'tasks:task_create' %}">Create New Task</a></p>
     </div>
   </body>
 </html>
