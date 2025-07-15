@@ -9,6 +9,7 @@ class TaskManager(models.Manager):
   def overdue(self, user):
     return self.filter(user=user, is_complete=False, due_date__lt=timezone.now())
   
+# Task Model
 class Task(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
