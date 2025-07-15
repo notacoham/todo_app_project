@@ -52,6 +52,8 @@
             <span>Incomplete</span>
             {% endif %}
             <a href="{% url 'tasks:task_edit' task.pk %}">Edit</a>
+
+            <a href="{% url 'tasks:task_delete' task.pk %}">Delete</a>
           </div>
         </li>
         {% endfor %}

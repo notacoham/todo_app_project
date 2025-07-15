@@ -70,4 +70,4 @@ def task_delete(request, pk):
     'title': f"Confirm Delete: {task.title}"
   }
 
-  return redner(request, 'tasks/task_confirm_delete.html', context)
+  return render(request, 'tasks/task_confirm_delete.html', context)

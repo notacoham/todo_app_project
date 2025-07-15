@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div>
+      <h1>{{ title }}</h1>
+      <p>Are you sure you want to delete task?</p>
+      <div>
+        {% if task.description %}
+        <p><strong>Description:</strong> {{ task.description }}</p>
+        {% endif %}
+        <p><strong>Due Date:</strong>{{ task.due_date|date:"M d, Y H:i" }}</p>
+        <p><strong>Priority:</strong> {{task.get_priority_display}}</p>
+        <p>
+          <strong>Status:</strong>{% if task.is_complete %} Complete{% else %}
+          Incomplete{% endif %}
+        </p>
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit">Yes, Delete</button>
+          <a href="{% url 'tasks:task_list' %}">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
