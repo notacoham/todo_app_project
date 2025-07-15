@@ -8,12 +8,12 @@ from .forms import TaskForm
 
 @login_required
 def task_list(request):
-  tasks = Task.objects.filter(user=request.user)
+  all_tasks = Task.objects.filter(user=request.user)
 
   overdue_tasks = Task.objects.overdue(request.user)
 
   context = {
-    'tasks': tasks,
+    'all_tasks': all_tasks,
     'overdue_tasks': overdue_tasks
   }
 
