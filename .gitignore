@@ -1,0 +1,29 @@
+# .gitignore
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python/
+env/
+.venv/
+venv/
+
+# Django
+db.sqlite3
+/media
+/static
+*.log
+*.pot
+*.mo
+*.po
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Operating System
+.DS_Store
+Thumbs.db
