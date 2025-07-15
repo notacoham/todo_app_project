@@ -37,7 +37,9 @@
         </div>
         <button type="submit">Log In</button>
       </form>
-      <p>Don't have an account? Sign up!</p>
+      <p>
+        Don't have an account? <a href="{% url 'tasks:register' %}">Register</a>
+      </p>
     </div>
   </body>
 </html>
