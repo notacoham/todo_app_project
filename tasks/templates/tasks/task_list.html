@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My To-Do Tasks</title>
+    <style>
+      .task-priority-low {
+        color: blue;
+      }
+      .task-priority-medium {
+        color: orange;
+      }
+      .task-priority-high {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>My To-Do Tasks</h1>
+      {% if user.is_authenticated %}
+      <p>Welcome, {{ user.username }}!</p>
+      <div>
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Log out</button>
+        </form>
+      </div>
+      {% else %}
+      <p>
+        You are not logged in. Please <a href="{% url 'login' %}">log in</a>.
+      </p>
+      {% endif %} {% if tasks %}
+      <h2>Your Tasks:</h2>
+      <ul>
+        {% for task in tasks %}
+        <li>
+          <div>
+            <span>{{ task.title }}</span>
+            <br />
+            <span>Due: {{ task.due_date|date:"M d, Y H:i" }}</span>
+            <br />
+            <span class="task-priority-{{ task.priority }}"
+              >Priority: {{ task.get_priority_display }}</span
+            >
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else }
+      <p>You don't have any tasks yet. Lets make some!</p>
+      {% endif %}
+      <p><a href="#">Create New Task</a></p>
+    </div>
+  </body>
+</html>
