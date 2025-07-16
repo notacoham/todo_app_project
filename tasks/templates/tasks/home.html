@@ -4,14 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to To-Do App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tasks/css/home.css' %}">
   </head>
   <body>
-    <div>
-      <h1>Welcome to My To-Do App!</h1>
-      <p>Organize your tasks and stay productive! Log in or register now!</p>
-      <div>
-        <a href="{% url 'login' %}">Log in</a>
-        <a href="{% url 'tasks:register' %}">Sign up!</a>
+    <div class="container">
+      <div class="content-wrapper">
+        <h1 class="title">Welcome to My To-Do App!</h1>
+        <p class="sub-title">
+          Welcome Bright Bridge Web Team! Thank you for taking the time to review
+          my submission!
+        </p>
+        <img 
+          src="{% static 'tasks/images/home-page-img.png' %}" 
+          alt="Todo App Illustration" 
+          class="home-image"
+        >
+      </div>
+      <div class="button-container">
+        <a class="button main-btn" href="{% url 'login' %}">Log in</a>
+        <a class="button sub-btn" href="{% url 'tasks:register' %}">Sign up!</a>
       </div>
     </div>
   </body>

@@ -4,33 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/css/register.css' %}" />
   </head>
   <body>
-    <div>
-      <h1>{{ title }}</h1>
-      <form method="post">
-        {% csrf_token %} {% if form.non_field_errors %}
-        <ul>
+    <div class="container">
+      <h1 class="title">{{ title }}</h1>
+      <form method="post" class="form-container">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+        <div class="error-list">
           {% for error in form.non_field_errors %}
-          <li>{{ error }}</li>
+            <li class="error-msg">{{ error }}</li>
           {% endfor %}
-        </ul>
-        {% endif %} {% for field in form %}
-        <div>
-          {{ field.label_tag }} {{ field }} {% if field.help_text %}
-          <small>{{field.help_text}}</small>
-          {% endif %} {% if field.errors %}
-          <ul>
+        </div>
+        {% endif %}
+        
+        {% for field in form %}
+        <div class="form-group">
+          {{ field.label_tag }}
+          {{ field }}
+          {% if field.errors %}
+          <ul class="error-list">
             {% for error in field.errors %}
-            <li>{{ errors }}</li>
+              <li class="error-msg">{{ error }}</li>
             {% endfor %}
           </ul>
           {% endif %}
+          {% if field.help_text and not field.errors %}
+          <small class="help-text">{{ field.help_text|safe }}</small>
+          {% endif %}
         </div>
         {% endfor %}
-        <button type="submit">Register</button>
+        
+        <button type="submit" class="submit-btn">Register</button>
       </form>
-      <a href="{% url 'login' %}">Already have an account? Login here!</a>
+      <a href="{% url 'login' %}" class="login-btn">Already have an account? Login here!</a>
     </div>
   </body>
 </html>

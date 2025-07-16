@@ -24,7 +24,7 @@ This is a To-Do list web application build with the Django framework. Users can 
 
 - Backend: Python, Django
 - Database: Default SQLite
-- Frontend: HTML, CSS, Tailwind
+- Frontend: HTML, CSS
 
 ## Setup
 

@@ -4,40 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/css/login.css' %}" />
   </head>
   <body>
-    <div>
-      <h2>Login</h2>
-      <form method="post">
+    <div class="container">
+      <h2 class="title">Login</h2>
+      <form method="post" class="form-container">
         {% csrf_token %}
         {% if form.errors %}
-        <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 10px;">
-          <p>Please correct the following errors:</p>
+        <div
+          class="error-container"
+          style="
+            color: red;
+            border: 1px solid red;
+            padding: 10px;
+            margin-bottom: 10px;
+          "
+        >
+          <p class="error-msg">Please correct the following errors:</p>
           {% for field, errors in form.errors.items %}
             {% if field == '__all__' %}
               {% for error in errors %}
-                <p>{{ error }}</p>
+                <p class="error">{{ error }}</p>
               {% endfor %}
             {% else %}
               {% for error in errors %}
-                <p>{{ field|capfirst }}: {{ error }}</p>
+                <p class="error">{{ field|capfirst }}: {{ error }}</p>
               {% endfor %}
             {% endif %}
           {% endfor %}
         </div>
         {% endif %}
 
-        <div>
-          <label for="id_username">Username:</label>
-          <input type="text" name="username" id="id_username" required />
+        <div class="form-label-container">
+          <label class="form-label" for="id_username">Username:</label>
+          <input
+            class="form-input"
+            type="text"
+            name="username"
+            id="id_username"
+            required
+          />
         </div>
-        <div>
-          <label for="id_password">Password:</label>
-          <input type="password" name="password" id="id_password" required />
+        <div class="form-label-container">
+          <label class="form-label" for="id_password">Password:</label>
+          <input
+            class="form-input"
+            type="password"
+            name="password"
+            id="id_password"
+            required
+          />
         </div>
-        <button type="submit">Log In</button>
+        <button class="submit-btn" type="submit">Log In</button>
       </form>
-      <p>
+      <p class="nav-link">
         Don't have an account? <a href="{% url 'tasks:register' %}">Register</a>
       </p>
     </div>
