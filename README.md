@@ -36,7 +36,7 @@ This is a To-Do list web application build with the Django framework. Users can 
 2. Create Venv
 
   - python3 -m venv .venv
-  - source. venv/bin/activate (macOS)
+  - source .venv/bin/activate (macOS)
 
 3. Install Dependencies
 
