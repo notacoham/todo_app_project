@@ -4,25 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tasks/css/task_confirm_delete.css' %}" />
   </head>
   <body>
-    <div>
-      <h1>{{ title }}</h1>
-      <p>Are you sure you want to delete task?</p>
-      <div>
+    <div class="container">
+      <h1 class="title">{{ title }}</h1>
+      <p class="question">Are you sure you want to delete task?</p>
+      <div class="details-container">
         {% if task.description %}
-        <p><strong>Description:</strong> {{ task.description }}</p>
+        <p class="label"><strong>Description:</strong> {{ task.description }}</p>
         {% endif %}
-        <p><strong>Due Date:</strong>{{ task.due_date|date:"M d, Y H:i" }}</p>
-        <p><strong>Priority:</strong> {{task.get_priority_display}}</p>
-        <p>
+        <p class="label"><strong>Due Date:</strong>{{ task.due_date|date:"M d, Y H:i" }}</p>
+        <p class="label"><strong>Priority:</strong> {{task.get_priority_display}}</p>
+        <p class="label">
           <strong>Status:</strong>{% if task.is_complete %} Complete{% else %}
           Incomplete{% endif %}
         </p>
-        <form method="post">
+        <form method="post" class="form-container">
           {% csrf_token %}
-          <button type="submit">Yes, Delete</button>
-          <a href="{% url 'tasks:task_list' %}">Cancel</a>
+          <button type="submit" class="submit-button">Yes, Delete</button>
+          <a href="{% url 'tasks:task_list' %}" class="nav-link">Cancel</a>
         </form>
       </div>
     </div>

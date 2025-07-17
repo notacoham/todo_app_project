@@ -1,0 +1,139 @@
+body {
+  background-color: #f3f0f5;
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(100, 0, 150, 0.15);
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  min-height: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  border: 1px solid rgba(100, 0, 150, 0.1);
+  box-sizing: border-box;
+}
+
+.title {
+  color: #6a1b9a;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin: 0;
+  font-weight: 600;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.error-container label {
+  color: #4a148c;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.error-container input,
+.error-container textarea,
+.error-container select {
+  padding: 0.8rem;
+  border: 2px solid #e1bee7;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.error-container input:focus,
+.error-container textarea:focus,
+.error-container select:focus {
+  outline: none;
+  border-color: #6a1b9a;
+}
+
+.error-container small {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.error-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.submit-button {
+  background-color: #6a1b9a;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.submit-button:hover {
+  background-color: #4a148c;
+  box-shadow: 0 4px 12px rgba(106, 27, 154, 0.3);
+}
+
+.nav-link {
+  color: #6a1b9a;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #4a148c;
+  text-decoration: underline;
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .container {
+    padding: 1.25rem;
+  }
+
+  .form-container {
+    gap: 1rem;
+  }
+
+  .error-container input,
+  .error-container textarea,
+  .error-container select {
+    padding: 0.7rem;
+  }
+} 
