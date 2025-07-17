@@ -4,88 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My To-Do Tasks</title>
-    <style>
-      .task-priority-low {
-        color: blue;
-      }
-      .task-priority-medium {
-        color: orange;
-      }
-      .task-priority-high {
-        color: red;
-      }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tasks/css/task_list.css' %}" />
   </head>
   <body>
-    <div>
-      <h1>My To-Do Tasks</h1>
+    <div class="container">
+      <h1 class="title">My To-Do Tasks</h1>
       {% if user.is_authenticated %}
-      <p>Welcome, {{ user.username }}!</p>
-      <div>
+      <p class="welcome-text">Welcome, {{ user.username }}!</p>
+      <div class="logout-form">
         <form action="{% url 'logout' %}" method="post">
           {% csrf_token %}
-          <button type="submit">Log out</button>
+          <button type="submit" class="logout-btn">Log out</button>
         </form>
       </div>
       {% else %}
-      <p>
+      <p class="welcome-text">
         You are not logged in. Please <a href="{% url 'login' %}">log in</a>.
       </p>
-      {% endif %} {% if overdue_tasks %}
-      <h2>Overdue Tasks:</h2>
-      <ul>
+      {% endif %}
+
+      {% if overdue_tasks %}
+      <h2 class="section-title">Overdue Tasks:</h2>
+      <ul class="task-list">
         {% for task in overdue_tasks %}
-        <li>
-          <div>
-            <span>{{ task.title }}</span>
-            <br />
-            <span>Due: {{ task.due_date|date:"M d, Y H:i" }}</span>
-            <br />
-            <span class="task-priority-{{ task.priority }}"
-              >Priority: {{ task.get_priority_display }}</span
-            >
+        <li class="task-item">
+          <div class="task-info">
+            <div class="task-title">{{ task.title }}</div>
+            <div class="task-due-date">Due: {{ task.due_date|date:"M d, Y H:i" }}</div>
+            <div class="task-priority-{{ task.priority }}">
+              Priority: {{ task.get_priority_display }}
+            </div>
           </div>
-          <div>
-            <span>Overdue!</span>
-            <a href="{% url 'tasks:task_edit' task.pk %}">Edit</a>
-            <a href="{% url 'tasks:task_delete' task.pk %}">Delete</a>
+          <div class="task-actions">
+            <span class="task-status status-overdue">Overdue!</span>
+            <a href="{% url 'tasks:task_edit' task.pk %}" class="button edit-btn">Edit</a>
+            <a href="{% url 'tasks:task_delete' task.pk %}" class="button delete-btn">Delete</a>
           </div>
         </li>
         {% endfor %}
       </ul>
       {% endif %}
 
-      <h2>All Tasks:</h2>
+      <h2 class="section-title">All Tasks:</h2>
       {% if all_tasks %}
-      <ul>
+      <ul class="task-list">
         {% for task in all_tasks %}
-        <li>
-          <div>
-            <span>{{ task.title }}</span>
-            <br />
-            <span>Due: {{ task.due_date|date:"M d, Y H:i" }}</span>
-            <br />
-            <span class="task-priority-{{ task.priority }}"
-              >Priority: {{ task.get_priority_display }}</span
-            >
+        <li class="task-item">
+          <div class="task-info">
+            <div class="task-title">{{ task.title }}</div>
+            <div class="task-due-date">Due: {{ task.due_date|date:"M d, Y H:i" }}</div>
+            <div class="task-priority-{{ task.priority }}">
+              Priority: {{ task.get_priority_display }}
+            </div>
           </div>
-          <div>
+          <div class="task-actions">
             {% if task.is_complete %}
-            <span>Complete</span>
+            <span class="task-status status-complete">Complete</span>
             {% else %}
-            <span>Incomplete</span>
+            <span class="task-status status-incomplete">Incomplete</span>
             {% endif %}
-            <a href="{% url 'tasks:task_edit' task.pk %}">Edit</a>
-
-            <a href="{% url 'tasks:task_delete' task.pk %}">Delete</a>
+            <a href="{% url 'tasks:task_edit' task.pk %}" class="button edit-btn">Edit</a>
+            <a href="{% url 'tasks:task_delete' task.pk %}" class="button delete-btn">Delete</a>
           </div>
         </li>
         {% endfor %}
       </ul>
       {% else %}
-      <p>You don't have any tasks yet. Lets make some!</p>
+      <p class="empty-state">You don't have any tasks yet. Let's make some!</p>
       {% endif %}
-      <p><a href="{% url 'tasks:task_create' %}">Create New Task</a></p>
+      <p><a href="{% url 'tasks:task_create' %}" class="create-task-btn">Create New Task</a></p>
     </div>
   </body>
 </html>

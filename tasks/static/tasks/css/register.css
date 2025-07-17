@@ -1,0 +1,134 @@
+body {
+    background-color: #f3f0f5;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(100, 0, 150, 0.15);
+    padding: 2rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(100, 0, 150, 0.1);
+    box-sizing: border-box;
+}
+
+.title {
+    color: #6a1b9a;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin: 0 0 1.5rem;
+    font-weight: 600;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+label {
+    font-weight: 500;
+    color: #7b1fa2;
+}
+
+input {
+    padding: 12px;
+    border: 2px solid rgba(106, 27, 154, 0.2);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6a1b9a;
+    box-shadow: 0 0 8px rgba(106, 27, 154, 0.2);
+}
+
+.help-text {
+    color: #7b1fa2;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 0.2rem;
+}
+
+.error-list {
+    list-style: none;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0;
+    background-color: #fff5f5;
+    border: 2px solid #feb2b2;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.error-msg {
+    color: #c53030;
+    margin: 0.3rem 0;
+    list-style: none;
+}
+
+.submit-btn {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #4a148c;
+    box-shadow: 0 4px 12px rgba(106, 27, 154, 0.3);
+}
+
+.login-btn {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #6a1b9a;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+    color: #4a148c;
+    text-decoration: underline;
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 1.25rem;
+    }
+
+    .form-container {
+        gap: 1rem;
+    }
+} 
