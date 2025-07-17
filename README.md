@@ -30,12 +30,13 @@ This is a To-Do list web application build with the Django framework. Users can 
 
 1. Clone Repo
 
-  - git clone
+  - git clone https://github.com/notacoham/todo_app_project
+  - cd todo_app_project 
 
 2. Create Venv
 
   - python3 -m venv .venv
-  - source. venv/bin/activate
+  - source. venv/bin/activate (macOS)
 
 3. Install Dependencies
 
@@ -66,4 +67,4 @@ This is a To-Do list web application build with the Django framework. Users can 
   - After login/registration you will be sent to the task list
   - Create tasks, Edit tasks, and even delete tasks
   - To test overdue tasks, create a task with a past due date and they will appear in their own list
-  - To test email reminders when creating or editing a task set it with a due date within the next hour. The reminder email will be printed to your terminal for easier testing.
+  - To test email reminders when creating or editing a task set it with a due date within the next hour. The reminder email will be printed to  your terminal for easier testing.
