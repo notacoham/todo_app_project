@@ -28,8 +28,8 @@ class Task(models.Model):
 
   objects = TaskManager()
 
-class Meta:
-  ordering = ['due_date', 'priority']
+  class Meta:
+    ordering = ['due_date', 'priority']
 
-def __str__(self):
-  return self.title
+  def __str__(self):
+    return self.title
